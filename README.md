@@ -54,3 +54,43 @@
 `SELECT nombre_articulo FROM Articulo WHERE precio_articulo BETWEEN 5000 AND 40000;`
 
 ![Consulta 6](img/consulta_6.png  "Consulta 6")
+
+7. Obtener el precio de los articulos en dolares
+ `SELECT nombre_articulo AS Articulo, precio_articulo / 4300 AS Precio_USD FROM Articulo;`
+
+ ![Consulta 7](img/consulta_7.jpg  "Consulta 7")
+
+8. Obtener el promedio de los articulos
+ `SELECT AVG(precio_articulo) AS promedio FROM Articulo;;`
+
+ ![Consulta 8](img/promedio.jpg  "promedio")
+
+9. Obtener el promedio de los articulos de fab02
+ `SELECT AVG(precio_articulo) AS promedio FROM Articulo WHERE codigo_fabricante = 'fab02';;`
+
+ ![Consulta 9](img/fb02.jpg  "promedio")
+
+ 10.  Obtener el número de artículos cuyo precio sea mayor o igual a $50000.
+ `SELECT COUNT(*) AS cantidad_articulos FROM Articulo WHERE precio_articulo >= 50000;;`
+
+![Consulta 10](img/consulta_10.jpg)  "consulta_10"
+
+11. Obtener el nombre y el precio de los artículos cuyo precio sea igual o mayor a $50000 y ordenarlos descendentemente por precio, y luego ascendentemente por nombre.
+`SELECT nombre_articulo, precio_articulo FROM Articulo WHERE precio_articulo >= 50000 ORDER BY precio_articulo DESC, nombre_articulo ASC;`
+![Consulta 11](img/consulta_11.jpg)  "consulta_11"
+
+12. Mostrar el listado completo de artículos, incluyendo por cada artículo los datos del artículo y de su fabricante.
+`SELECT * FROM Articulo JOIN Fabricante ON Articulo.id_fabricante = Fabricante.id_fabricante;`
+![Consulta 12](img/consulta_12.jpg)  "consulta_12"
+
+13. Obtener un listado de artículos, incluyendo el nombre del artículo, su precio y el nombre de su fabricante.
+`SELECT A.nombre_articulo, A.precio_articulo, F.nombre_fabricante FROM Articulo A JOIN Fabricante F ON A.id_fabricante = F.id_fabricante;`
+![Consulta 13](img/consulta_13.jpg)  "consulta_13"
+
+14. Obtener el precio promedio de los productos de cada fabricante, mostrando solo los códigos de los fabricantes.
+`SELECT id_fabricante, AVG(precio_articulo) AS promedio FROM Articulo GROUP BY id_fabricante;`
+![Consulta 14](img/consulta_14.jpg)  "consulta_14"
+
+15. Mostrar el precio promedio de los productos de cada fabricante, mostrando el nombre del fabricante.
+`SELECT F.id_fabricante, AVG(A.precio_articulo) AS promedio FROM Articulo A JOIN Fabricante F ON A.id_fabricante = F.id_fabricante GROUP BY F.nombre_fabricante;`
+![Consulta 15](img/consulta_15.jpg)  "consulta_15"
